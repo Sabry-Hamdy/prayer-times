@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مواقيت الصلاة</title>
+    <!-- Main CSS File -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="cities">
+          <label for="egypt-capitals">اختر التوقيت</label>
+          <select id="egypt-capitals">
+            <option value="Alexandria">Alexandria</option>
+            <option value="Aswan">Aswan</option>
+            <option value="Asyut">Asyut</option>
+            <option value="Damanhur">Damanhur</option>
+            <option value="Beni Suef">Beni Suef</option>
+            <option value="Cairo" selected>Cairo</option>
+            <option value="Mansoura">Mansoura</option>
+            <option value="Damietta">Damietta</option>
+            <option value="Faiyum">Faiyum</option>
+            <option value="Tanta">Tanta</option>
+            <option value="Giza">Giza</option>
+            <option value="Ismailia">Ismailia</option>
+            <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+            <option value="Luxor">Luxor</option>
+            <option value="Marsa Matruh">Marsa Matruh</option>
+            <option value="Minya">Minya</option>
+            <option value="Shibin El Kom">Shibin El Kom</option>
+            <option value="Kharga">Kharga</option>
+            <option value="Arish">Arish</option>
+            <option value="Port Said">Port Said</option>
+            <option value="Banha">Banha</option>
+            <option value="Qena">Qena</option>
+            <option value="Hurghada">Hurghada</option>
+            <option value="Sohag">Sohag</option>
+            <option value="El Tor">El Tor</option>
+            <option value="Suez">Suez</option>
+          </select>
+        </div>
+        <div class="date">
+          <span class="current-date" id="current-date">9 شوال 1445</span>
+        </div>
+      </header>
+      <div class="next-prayer">
+        <!-- <div class="image">
+          <img src="" alt="" />
+        </div> -->
+        <div class="text">
+          <h1 class="next">الفرض التالي: <span class="next-prayer-name" id="next-prayer-name"></span></h1>
+          <p class="time" id="">متبقي من الوقت: <span class="time-remaining" id="time-remaining">04:50:00</span></p>
+        </div>
+      </div>
+      <div class="days">
+        <div class="day first-day" id="first-day-parent">
+          <h3 class="day-name" id="first-day">اليوم</h3>
+          <hr />
+          <ul class="prayer-times">
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+          </ul>
+        </div>
+        <div class="day" id="second-day-parent">
+          <h3 class="day-name" id="second-day">اليوم</h3>
+          <hr />
+          <ul class="prayer-times">
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+          </ul>
+        </div>
+        <div class="day" id="third-day-parent">
+          <h3 class="day-name" id="third-day">اليوم</h3>
+          <hr />
+          <ul class="prayer-times">
+            <li>
+              <p class="prayer-name" id="prayer-name">الفجر</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">الشروق</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">الظهر</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">العصر</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">المغرب</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">العشاء</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+          </ul>
+        </div>
+        <div class="day" id="fourth-day-parent">
+          <h3 class="day-name" id="fourth-day">اليوم</h3>
+          <hr />
+          <ul class="prayer-times">
+            <li>
+              <p class="prayer-name" id="prayer-name">الفجر</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">الشروق</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">الظهر</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">العصر</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">المغرب</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">العشاء</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./node_modules/axios/dist/axios.min.js"></script>
+  <script src="main.js"></script>
+</html>

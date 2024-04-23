@@ -1,0 +1,177 @@
+:root {
+    --main-color: #1CC42B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    direction: rtl;
+    font-family: "Cairo", sans-serif;
+    font-size: 18px;
+    box-sizing: border-box;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../images/morning.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+
+body .container {
+    padding-inline: 15px;
+    margin: auto;
+    color: white;
+    position: relative;
+}
+
+/* Small Screens  */
+
+@media(min-width: 768px) {
+    .container {
+        width: 720px;
+    }
+}
+
+/* Midium Screens  */
+
+@media(min-width: 992px) {
+    .container {
+        width: 945px;
+    }
+}
+
+/* Large Screens  */
+
+@media(min-width: 1200px) {
+    .container {
+        width: 1140px;
+    }
+}
+
+.container header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+    .container header {
+        flex-direction: column;
+    }
+}
+
+.container .cities {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    width: fit-content;
+    margin: 25px 0 30px;
+
+}
+
+.container .cities label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+
+.container .cities select {
+    padding: 10px;
+    border: 1px solid #DDD;
+    border-radius: 6px;
+    background-color: #EEE;
+    font-size: 18px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.container .cities select:focus {
+    outline: none;
+}
+
+.container .date {}
+
+.container .date .current-date {
+    display: block;
+    font-size: 20px;
+}
+
+.container .next-prayer {}
+
+.container .next-prayer .image {}
+
+.container .next-prayer .image img {}
+
+.container .next-prayer .text {
+    text-align: center;
+}
+
+.container .next-prayer .text .next {
+    margin-bottom: 10px;
+}
+
+.container .next-prayer .text .next-prayer-name {
+    /* color: #00B048; */
+    color: var(--main-color);
+
+}
+
+.container .next-prayer .text .time {
+    font-size: 24px;
+}
+
+.container .next-prayer .text .time-remaining {}
+
+.container .days {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    color: black;
+}
+
+.container .days .day {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #EEE;
+    box-shadow: 2px 4px 10px 4px #353535;
+    border-radius: 12px;
+}
+
+.container .days .first-day .day-name {
+    color: var(--main-color);
+}
+
+.container .days .day .day-name {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.container .days .day hr {
+    width: 175px;
+    margin: auto;
+    border: 1px solid #c8c8c8;
+}
+
+.container .days .day ul {
+    list-style-type: none;
+    font-size: 18px;
+}
+
+.container .days .day ul li {
+    padding: 15px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container .days .day ul li .active {
+    color: var(--main-color);
+}
+
+.container .days .day ul li:not(:last-child) {
+    border-bottom: 1px solid #c8c8c8;
+}
