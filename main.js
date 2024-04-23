@@ -1,5 +1,3 @@
-// import axios, { isCancel, AxiosError } from "axios";
-
 let date = new Date();
 let currentYear = date.getFullYear();
 let currentMonth = date.getMonth() + 1;
