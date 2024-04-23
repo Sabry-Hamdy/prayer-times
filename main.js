@@ -1,3 +1,5 @@
+// import axios, { isCancel, AxiosError } from "axios";
+
 let date = new Date();
 let currentYear = date.getFullYear();
 let currentMonth = date.getMonth() + 1;
@@ -50,33 +52,30 @@ city.addEventListener("change", (event) => {
 
 // Get General Prayers Info
 function getInfo(day, cityName) {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(`https://api.aladhan.com/v1/calendarByCity/${currentYear}/${currentMonth}?city=${cityName}&country=egypt&method=5`)
-      .then((response) => {
-        // Assigning Day and Date Info
-        let gregorianDate = response.data.data[day].date.readable;
-        let hijriYear = response.data.data[day].date.hijri.year;
-        let hijriMonth = response.data.data[day].date.hijri.month.ar;
-        let hijriDay = response.data.data[day].date.hijri.weekday.ar;
-        let hijriDayNumber = response.data.data[day].date.hijri.day;
-        let formattedHijriDate = [hijriDayNumber, hijriMonth, hijriYear].join(" ");
+  let request = axios
+    .get(`https://api.aladhan.com/v1/calendarByCity/${currentYear}/${currentMonth}?city=${cityName}&country=egypt&method=5`)
+    .then((response) => {
+      // Assigning Day and Date Info
+      let gregorianDate = response.data.data[day].date.readable;
+      let hijriYear = response.data.data[day].date.hijri.year;
+      let hijriMonth = response.data.data[day].date.hijri.month.ar;
+      let hijriDay = response.data.data[day].date.hijri.weekday.ar;
+      let hijriDayNumber = response.data.data[day].date.hijri.day;
+      let formattedHijriDate = [hijriDayNumber, hijriMonth, hijriYear].join(" ");
 
-        getPrayersInfo(response, day, hijriDay);
+      getPrayersInfo(response, day, hijriDay);
 
-        // Print the Date if it's not
-        if (cycleFinished === false) {
-          printDate(formattedHijriDate);
-          cycleFinished = true;
-        }
+      // Print the Date if it's not
+      if (cycleFinished === false) {
+        printDate(formattedHijriDate);
+        cycleFinished = true;
+      }
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
 
-        resolve();
-      })
-      .catch((error) => {
-        console.error(error.message);
-        reject();
-      });
-  });
+  return request;
 }
 
 // Print out Date to the Screen
