@@ -76,16 +76,14 @@ body .container {
     font-size: 20px;
 }
 
-
-
 .container .cities select {
-    padding: 10px;
-    border: 1px solid #DDD;
+    padding: 7px 5px;
     border-radius: 6px;
-    background-color: #EEE;
-    font-size: 18px;
+    font-size: 20px;
     text-align: center;
     margin-right: 15px;
+    font-weight: 600;
+    font-family: "Cairo", sans-serif;
 }
 
 .container .cities select:focus {
