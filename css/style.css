@@ -132,6 +132,12 @@ body .container {
     color: black;
 }
 
+@media (max-width: 767px) {
+    .container .days {
+        padding-inline: 15px;
+    }
+}
+
 .container .days .day {
     padding: 10px;
     background-color: #f9f9f9;
@@ -150,7 +156,7 @@ body .container {
 }
 
 .container .days .day hr {
-    width: 175px;
+    width: 75%;
     margin: auto;
     border: 1px solid #c8c8c8;
 }
@@ -164,6 +170,13 @@ body .container {
     padding: 15px 10px;
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+    .container .days .day ul li {
+        padding-inline: 0;
+        justify-content: space-around;
+    }
 }
 
 .container .days .day ul li .active {
