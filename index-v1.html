@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
+    <!-- Axios Library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
@@ -46,51 +48,21 @@
           </select>
         </div>
         <div class="date">
-          <span class="current-date" id="hijri-date">09 شوال 1445</span>
+          <span class="current-date" id="current-date">09 شوال 1445</span>
         </div>
       </header>
-      <!-- <div class="next-prayer">
-        <div class="image">
+      <div class="next-prayer">
+        <!-- <div class="image">
           <img src="" alt="" />
-        </div>
+        </div> -->
         <div class="text">
           <h1 class="next">الفرض التالي: <span class="next-prayer-name" id="next-prayer-name"></span></h1>
           <p class="time" id="">متبقي من الوقت: <span class="time-remaining" id="time-remaining">04:50:00</span></p>
         </div>
-      </div> -->
+      </div>
       <div class="days">
-        <div class="day first-day" id="first-day">
-          <h3 class="day-name" id="day">اليوم</h3>
-          <hr />
-          <ul class="prayer-times" id="prayer-times">
-            <li>
-              <p class="prayer-name" id="prayer-name">test</p>
-              <span class="prayer-time" id="prayer-time">05:00</span>
-            </li>
-            <li>
-              <p class="prayer-name" id="prayer-name">test</p>
-              <span class="prayer-time" id="prayer-time">05:00</span>
-            </li>
-            <li>
-              <p class="prayer-name" id="prayer-name">test</p>
-              <span class="prayer-time" id="prayer-time">05:00</span>
-            </li>
-            <li>
-              <p class="prayer-name" id="prayer-name">test</p>
-              <span class="prayer-time" id="prayer-time">05:00</span>
-            </li>
-            <li>
-              <p class="prayer-name" id="prayer-name">test</p>
-              <span class="prayer-time" id="prayer-time">05:00</span>
-            </li>
-            <li>
-              <p class="prayer-name" id="prayer-name">test</p>
-              <span class="prayer-time" id="prayer-time">05:00</span>
-            </li>
-          </ul>
-        </div>
-        <div class="day" id="second-day">
-          <h3 class="day-name" id="day">اليوم</h3>
+        <div class="day first-day" id="first-day-parent">
+          <h3 class="day-name" id="first-day">اليوم</h3>
           <hr />
           <ul class="prayer-times">
             <li>
@@ -119,8 +91,38 @@
             </li>
           </ul>
         </div>
-        <div class="day" id="third-day">
-          <h3 class="day-name" id="day">اليوم</h3>
+        <div class="day" id="second-day-parent">
+          <h3 class="day-name" id="second-day">اليوم</h3>
+          <hr />
+          <ul class="prayer-times">
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+            <li>
+              <p class="prayer-name" id="prayer-name">test</p>
+              <span class="prayer-time" id="prayer-time">05:00</span>
+            </li>
+          </ul>
+        </div>
+        <div class="day" id="third-day-parent">
+          <h3 class="day-name" id="third-day">اليوم</h3>
           <hr />
           <ul class="prayer-times">
             <li>
@@ -149,8 +151,8 @@
             </li>
           </ul>
         </div>
-        <div class="day" id="fourth-day">
-          <h3 class="day-name" id="day">اليوم</h3>
+        <div class="day" id="fourth-day-parent">
+          <h3 class="day-name" id="fourth-day">اليوم</h3>
           <hr />
           <ul class="prayer-times">
             <li>
@@ -183,7 +185,6 @@
     </div>
   </body>
 
-  <!-- <script src="./services/apiPrayerTimes.js"></script> -->
   <!-- Main JS File -->
-  <script src="main.js" type="module"></script>
+  <script src="main.js"></script>
 </html>
