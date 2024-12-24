@@ -1,4 +1,4 @@
-export function displayHijriDate({ date }) {
+export function displayHijriDate({ date = {} }) {
   const day = date.hijri.day;
   const month = date.hijri.month.ar;
   const year = date.hijri.year;
