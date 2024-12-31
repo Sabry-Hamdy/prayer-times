@@ -135,6 +135,7 @@ body .container {
 }
 
 .container .next-prayer .text .time-remaining {
+  color: #44ff55;
 }
 
 .container .days {

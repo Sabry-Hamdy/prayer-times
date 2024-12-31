@@ -1,11 +1,11 @@
 import { getFormattedPrayers } from "./getFormattedPrayers.mjs";
 
-export function calcNextPrayer(data) {
+let NEXT_PRAYER = {};
+
+export function getNextPrayer(data) {
   const prayerTimings = getFormattedPrayers(data);
 
   const currentTime = new Date();
-
-  const currentDate = new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate());
 
   prayerTimings.sort((a, b) => 1 * Number(a.time.split(":").at(0)) - Number(b.time.split(":").at(0)));
 
@@ -13,10 +13,14 @@ export function calcNextPrayer(data) {
     const [hours, minutes] = prayer.time.split(":").map(Number);
 
     if (currentTime.getHours() < hours) {
+      NEXT_PRAYER = prayer;
+
       return prayer;
     }
 
     if (currentTime.getHours() === hours && currentTime.getMinutes() < minutes) {
+      NEXT_PRAYER = prayer;
+
       return prayer;
     }
 
@@ -25,4 +29,28 @@ export function calcNextPrayer(data) {
       return null;
     }
   }
+}
+
+export function calcNextPrayer() {
+  setInterval(() => {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    const nextPrayerHours = NEXT_PRAYER.time.split(":").map(Number).at(0);
+    const nextPrayerMins = NEXT_PRAYER.time.split(":").map(Number).at(1);
+
+    // console.log(nextPrayerHours, nextPrayerMins);
+    const remainingTime = {
+      hours: (Math.abs(hours - nextPrayerHours) - 1).toString().padStart(2, 0),
+      minutes: (60 - Math.abs(nextPrayerMins - minutes) - 1).toString().padStart(2, 0),
+      seconds: (60 - seconds).toString().padStart(2, 0),
+    };
+
+    console.log(remainingTime.hours, remainingTime.minutes);
+
+    document.getElementById("next-prayer-name").textContent = NEXT_PRAYER.name;
+    document.getElementById("time-remaining").textContent = `${remainingTime.hours}:${remainingTime.minutes}:${remainingTime.seconds}`;
+  }, 1000);
 }

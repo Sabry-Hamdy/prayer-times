@@ -1,10 +1,10 @@
-import { calcNextPrayer } from "../helpers/calcNextPrayer.mjs";
+import { getNextPrayer } from "../helpers/calcNextPrayer.mjs";
 import { formatTime } from "../helpers/formatTime.mjs";
 import { getFormattedPrayers } from "../helpers/getFormattedPrayers.mjs";
 
 export function displayPrayerTimes({ data, dayOfWeek }) {
   const prayerTimings = getFormattedPrayers(data);
-  const nextPrayer = dayOfWeek === "first-day" || dayOfWeek === "second-day" ? calcNextPrayer(data) : null;
+  const nextPrayer = dayOfWeek === "first-day" || dayOfWeek === "second-day" ? getNextPrayer(data) : null;
 
   const day = document.getElementById(dayOfWeek);
   day.innerHTML = "";
