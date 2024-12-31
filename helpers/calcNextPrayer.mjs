@@ -1,7 +1,5 @@
 import { getFormattedPrayers } from "./getFormattedPrayers.mjs";
 
-let NEXT_PRAYER = {};
-
 export function getNextPrayer(data) {
   const prayerTimings = getFormattedPrayers(data);
 
@@ -13,14 +11,10 @@ export function getNextPrayer(data) {
     const [hours, minutes] = prayer.time.split(":").map(Number);
 
     if (currentTime.getHours() < hours) {
-      NEXT_PRAYER = prayer;
-
       return prayer;
     }
 
     if (currentTime.getHours() === hours && currentTime.getMinutes() < minutes) {
-      NEXT_PRAYER = prayer;
-
       return prayer;
     }
 
@@ -31,33 +25,43 @@ export function getNextPrayer(data) {
   }
 }
 
-export function calcNextPrayer() {
+function calcNextPrayer(nextPrayer) {
+  // Get the current time
+  const now = new Date();
+
+  // Parse the Adhan time
+  const [adhanHours, adhanMinutes] = nextPrayer.time.split(":").map(Number);
+
+  // Create a Date object for the Adhan time today
+  const adhanDate = new Date();
+  adhanDate.setHours(adhanHours, adhanMinutes, 0, 0);
+
+  // Calculate the difference in milliseconds
+  let difference = adhanDate - now;
+
+  // If the Adhan time has already passed today, calculate for tomorrow
+  if (difference < 0) {
+    adhanDate.setDate(adhanDate.getDate() + 1);
+    difference = adhanDate - now;
+  }
+
+  // Convert the difference to hours, minutes, and seconds
+  const hours = Math.floor(difference / (1000 * 60 * 60));
+  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+  // Return the countdown as a formatted string
+
+  document.getElementById("next-prayer-name").textContent = nextPrayer.name;
+  document.getElementById("time-remaining").textContent = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+export function startCountdown(nextPrayer) {
+  // Initial call to set the countdown immediately
+  calcNextPrayer(nextPrayer);
+
+  // Set an interval to update the countdown every second
   setInterval(() => {
-    const date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-
-    const nextPrayerHours = NEXT_PRAYER.time.split(":").map(Number).at(0);
-    const nextPrayerMins = NEXT_PRAYER.time.split(":").map(Number).at(1);
-
-    // console.log("-------------------");
-    // console.log(hours, minutes);
-    // console.log(nextPrayerHours, nextPrayerMins);
-    // console.log("-------------------");
-    const remainingTime = {
-      hours: Math.abs(hours - nextPrayerHours)
-        .toString()
-        .padStart(2, 0),
-      minutes: Math.abs(60 - (60 - nextPrayerMins + minutes) - 1)
-        .toString()
-        .padStart(2, 0),
-      seconds: (60 - seconds).toString().padStart(2, 0),
-    };
-
-    // console.log(remainingTime.hours, remainingTime.minutes);
-
-    document.getElementById("next-prayer-name").textContent = NEXT_PRAYER.name;
-    document.getElementById("time-remaining").textContent = `${remainingTime.hours}:${remainingTime.minutes}:${remainingTime.seconds}`;
+    calcNextPrayer(nextPrayer);
   }, 1000);
 }

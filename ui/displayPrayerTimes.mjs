@@ -1,4 +1,4 @@
-import { calcNextPrayer, getNextPrayer } from "../helpers/calcNextPrayer.mjs";
+import { getNextPrayer, startCountdown } from "../helpers/calcNextPrayer.mjs";
 import { formatTime } from "../helpers/formatTime.mjs";
 import { getFormattedPrayers } from "../helpers/getFormattedPrayers.mjs";
 
@@ -39,12 +39,14 @@ export function displayPrayerTimes({ data, dayOfWeek }) {
       p.classList.add("active");
       span.classList.add("active");
 
-      calcNextPrayer();
+      startCountdown(nextPrayer);
     }
 
     if (nextPrayer === null && prayer.id === 1 && dayOfWeek === "second-day") {
       p.classList.add("active");
       span.classList.add("active");
+
+      startCountdown(prayer);
     }
 
     li.appendChild(p);
