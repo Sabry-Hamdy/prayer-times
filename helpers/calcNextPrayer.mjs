@@ -43,8 +43,12 @@ export function calcNextPrayer() {
 
     // console.log(nextPrayerHours, nextPrayerMins);
     const remainingTime = {
-      hours: (Math.abs(hours - nextPrayerHours) - 1).toString().padStart(2, 0),
-      minutes: (60 - Math.abs(nextPrayerMins - minutes) - 1).toString().padStart(2, 0),
+      hours: Math.abs(hours - nextPrayerHours)
+        .toString()
+        .padStart(2, 0),
+      minutes: Math.abs(nextPrayerMins - minutes)
+        .toString()
+        .padStart(2, 0),
       seconds: (60 - seconds).toString().padStart(2, 0),
     };
 
