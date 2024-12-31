@@ -41,18 +41,21 @@ export function calcNextPrayer() {
     const nextPrayerHours = NEXT_PRAYER.time.split(":").map(Number).at(0);
     const nextPrayerMins = NEXT_PRAYER.time.split(":").map(Number).at(1);
 
+    // console.log("-------------------");
+    // console.log(hours, minutes);
     // console.log(nextPrayerHours, nextPrayerMins);
+    // console.log("-------------------");
     const remainingTime = {
       hours: Math.abs(hours - nextPrayerHours)
         .toString()
         .padStart(2, 0),
-      minutes: Math.abs(nextPrayerMins - minutes)
+      minutes: Math.abs(60 - (60 - nextPrayerMins + minutes) - 1)
         .toString()
         .padStart(2, 0),
       seconds: (60 - seconds).toString().padStart(2, 0),
     };
 
-    console.log(remainingTime.hours, remainingTime.minutes);
+    // console.log(remainingTime.hours, remainingTime.minutes);
 
     document.getElementById("next-prayer-name").textContent = NEXT_PRAYER.name;
     document.getElementById("time-remaining").textContent = `${remainingTime.hours}:${remainingTime.minutes}:${remainingTime.seconds}`;
