@@ -1,5 +1,5 @@
 // import { getNextPrayer } from "./helpers/calcNextPrayer.mjs";
-import { calcNextPrayer } from "./helpers/calcNextPrayer.mjs";
+// import { calcNextPrayer } from "./helpers/calcNextPrayer.mjs";
 import { getPrayers } from "./services/apiPrayerTimes.mjs";
 import { displayHijriDate } from "./ui/displayHijriDate.mjs";
 import { displayPrayerTimes } from "./ui/displayPrayerTimes.mjs";
@@ -27,8 +27,6 @@ async function displayPrayers() {
   displayHijriDate(dataPerDay.dayOne);
 
   displayPrayerTimes({ data: dataPerDay.dayOne, dayOfWeek: "first-day" });
-
-  calcNextPrayer();
 
   displayPrayerTimes({ data: dataPerDay.dayTwo, dayOfWeek: "second-day" });
   displayPrayerTimes({ data: dataPerDay.dayThree, dayOfWeek: "third-day" });

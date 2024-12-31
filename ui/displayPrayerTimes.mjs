@@ -1,4 +1,4 @@
-import { getNextPrayer } from "../helpers/calcNextPrayer.mjs";
+import { calcNextPrayer, getNextPrayer } from "../helpers/calcNextPrayer.mjs";
 import { formatTime } from "../helpers/formatTime.mjs";
 import { getFormattedPrayers } from "../helpers/getFormattedPrayers.mjs";
 
@@ -38,6 +38,8 @@ export function displayPrayerTimes({ data, dayOfWeek }) {
     if (nextPrayer?.id === prayer.id && dayOfWeek === "first-day") {
       p.classList.add("active");
       span.classList.add("active");
+
+      calcNextPrayer();
     }
 
     if (nextPrayer === null && prayer.id === 1 && dayOfWeek === "second-day") {
